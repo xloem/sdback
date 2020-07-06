@@ -29,7 +29,7 @@ else
 	if [ "$(find "$SRCDIR" -name '*:*' -quit)" != "" ]; then echo fail "$SRCDIR" contains : in filename; continue; fi
 	mkdir -p "${DESTROOT}/$SRCDIR" &&
 	cp -a "$SRCDIR"/. "$DESTROOT"/"$SRCDIR"/. &&
-	rm -rf "$SRCDIR" &&
+	chmod -R u+rwx "$SRCDIR" && rm -rf "$SRCDIR" &&
 	ln -vs "$DESTROOT"/"$SRCDIR" "${SRCDIR%/}" || exit 1
 fi
 
