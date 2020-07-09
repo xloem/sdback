@@ -11,6 +11,7 @@ SRCDIR="$(readlink -m "${DIR%/}")/"
 pushd "$HOME"/..
 SRCROOT="$(readlink -m ".")"
 SRCDIR="${SRCDIR#$SRCROOT/}"
+SRCDIR="${SRCDIR%/}"
 echo SRCDIR="$SRCDIR"
 
 if [ "$SRCDIR" = "" ]
