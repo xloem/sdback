@@ -25,9 +25,9 @@ do
 done
 
 else
-	if [ "$(find "$SRCDIR" -type l -quit)" != "" ]; then echo fail "$SRCDIR" symlink; continue; fi
-	if [ "$(find "$SRCDIR" -type f -executable -quit)" != "" ]; then echo fail "$SRCDIR" executable; continue; fi
-	if [ "$(find "$SRCDIR" -name '*:*' -quit)" != "" ]; then echo fail "$SRCDIR" contains : in filename; continue; fi
+	if [ "$(find "$SRCDIR" -type l -print -quit)" != "" ]; then echo fail "$SRCDIR" symlink; continue; fi
+	if [ "$(find "$SRCDIR" -type f -executable -print -quit)" != "" ]; then echo fail "$SRCDIR" executable; continue; fi
+	if [ "$(find "$SRCDIR" -name '*:*' -print -quit)" != "" ]; then echo fail "$SRCDIR" contains : in filename; continue; fi
 	mkdir -p "${DESTROOT}/$SRCDIR" &&
 	cp -a "$SRCDIR"/. "$DESTROOT"/"$SRCDIR"/. &&
 	chmod -R u+rwx "$SRCDIR" && rm -rf "$SRCDIR" &&
