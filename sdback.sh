@@ -4,6 +4,7 @@ DESTROOT="$HOME/storage/external-1/sdback"
 for DIR in "$@"
 do
 popd
+if [ -h "${DIR%/}" ]; then continue; fi
 SRCDIR="$(readlink -m "${DIR%/}")/"
 
 # move out .git folders under home
