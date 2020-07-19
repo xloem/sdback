@@ -14,6 +14,11 @@ SRCROOT="$(readlink -m ".")"
 SRCDIR="${SRCDIR#$SRCROOT/}"
 SRCDIR="${SRCDIR%/}"
 echo SRCDIR="$SRCDIR"
+if [ "${SRCDIR#$DESTROOT}" != "$SRCDIR" ]
+then
+	echo already backed up
+	continue
+fi
 
 if [ "$SRCDIR" = "" ]
 then
